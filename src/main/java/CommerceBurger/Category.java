@@ -16,18 +16,19 @@ public class Category {
    // 상품 추가
    public void addProduct(Product product) {
       // TODO
+      products.add(product);
    }
 
    // 카테고리 이름 반환
    public String getName() {
       // TODO
-      return null;
+      return name;
    }
 
    // 상품 목록 반환
    public List<Product> getProducts() {
       // TODO
-      return null;
+      return products;
    }
 }
 
