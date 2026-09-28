@@ -15,4 +15,20 @@ public class Product {
     }
 
     // TODO: Getter / Setter
+
+    public String getName() {
+        return name;
+    }
+
+    public int getPrice() {
+        return price;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public int getStockQuantity() {
+        return stockQuantity;
+    }
 }
