@@ -9,6 +9,22 @@ public class CommerceSystem {
     private Customer customer;
     private Scanner scanner;
 
+    public List<Category> getCategories() {
+        return categories;
+    }
+
+    public void setCategories(List<Category> categories) {
+        this.categories = categories;
+    }
+
+    public Customer getCustomer() {
+        return customer;
+    }
+
+    public void setCustomer(Customer customer) {
+        this.customer = customer;
+    }
+
     public CommerceSystem(List<Category> categories, Customer customer) {
         this.categories = categories;
         this.customer = customer;
