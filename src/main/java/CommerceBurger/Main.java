@@ -23,7 +23,7 @@ public class Main {
         Product garlicbulgogiwhopper = new Product(
                 "갈릭불고기와퍼",
                 8700,
-                "# 크리스피 갈릭칩과 불고기소스로 즐기는 갈릭불고기와퍼",
+                "크리스피 갈릭칩과 불고기소스로 즐기는 갈릭불고기와퍼",
                 150
         );
 

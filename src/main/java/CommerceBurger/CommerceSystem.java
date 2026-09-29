@@ -7,10 +7,12 @@ public class CommerceSystem {
 
     private List<Category> categories;
     private Customer customer;
+    private Scanner scanner;
 
     public CommerceSystem(List<Category> categories, Customer customer) {
         this.categories = categories;
         this.customer = customer;
+        this.scanner = new Scanner(System.in);
     }
 
         private void showProducts (Category category) {
@@ -35,16 +37,24 @@ public class CommerceSystem {
             }
 
             System.out.println("0. 뒤로가기");
+            System.out.print("상품 선택: ");
 
-            // TODO
-            // 사용자에게 상품 번호 입력받기
-            // 0이면 돌아가기
-            // 1 이상이면 products에서 선택한 상품 가져오기
-            // 선택한 상품 출력
+            int productChoice = scanner.nextInt();
+
+            if (productChoice==0) {
+                return;
+            }
+
+            if (productChoice >= 1 && productChoice <= products.size()) {
+                Product selectedProduct = products.get(productChoice - 1);
+                System.out.println(selectedProduct.getName() + "을(를) 선택했습니다.");
+            } else {
+                System.out.println("잘못된 입력입니다.");
+            }
         }
 
         public void start() {
-            Scanner scanner = new Scanner(System.in);
+            // Scanner scanner = new Scanner(System.in);
 
             while (true) {
 
