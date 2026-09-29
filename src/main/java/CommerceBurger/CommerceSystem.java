@@ -8,6 +8,7 @@ public class CommerceSystem {
     private List<Category> categories;
     private Customer customer;
     private Scanner scanner;
+    private Cart cart;
 
     public List<Category> getCategories() {
         return categories;
@@ -29,6 +30,7 @@ public class CommerceSystem {
         this.categories = categories;
         this.customer = customer;
         this.scanner = new Scanner(System.in);
+        this.cart = new Cart();
     }
 
         private void showProducts (Category category) {
@@ -72,6 +74,29 @@ public class CommerceSystem {
                         + " | 재고: "
                         + selectedProduct.getStockQuantity()
                         + "개");
+
+                System.out.print("장바구니에 추가하시겠습니까? (Y/N): ");
+                String answer = scanner.next();
+
+                if (cart.canAdd(selectedProduct, 1)) {
+                    cart.addItem(selectedProduct, 1);
+                    System.out.println("장바구니에 추가되었습니다.");
+                } else {
+                    System.out.println("재고가 부족합니다.");
+                }
+
+                System.out.println("[ 장바구니 ]");
+
+                for (CartItem item : cart.getItems()) {
+                    System.out.println(
+                            item.getProduct().getName()
+                                    + " | "
+                                    + item.getProduct().getPrice()
+                                    + "원 | "
+                                    + item.getQuantity()
+                                    + "개"
+                    );
+                }
             } else {
                 System.out.println("잘못된 입력입니다.");
             }
