@@ -14,8 +14,6 @@ public class Product {
         this.stockQuantity = stockQuantity;
     }
 
-    // TODO: Getter / Setter
-
     public String getName() {
         return name;
     }

@@ -47,7 +47,15 @@ public class CommerceSystem {
 
             if (productChoice >= 1 && productChoice <= products.size()) {
                 Product selectedProduct = products.get(productChoice - 1);
-                System.out.println(selectedProduct.getName() + "을(를) 선택했습니다.");
+                System.out.println("선택한 상품: "
+                        + selectedProduct.getName()
+                        + " | "
+                        + selectedProduct.getPrice()
+                        + "원 | "
+                        + selectedProduct.getDescription()
+                        + " | 재고: "
+                        + selectedProduct.getStockQuantity()
+                        + "개");
             } else {
                 System.out.println("잘못된 입력입니다.");
             }
