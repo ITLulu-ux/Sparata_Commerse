@@ -22,4 +22,14 @@ public class Cart {
     public boolean canAdd(Product product, int quantity) {
         return product.getStockQuantity() >= quantity;
     }
+
+    public int getTotalPrice() {
+        int total = 0;
+
+        for (CartItem item : items) {
+            total += item.getTotalPrice();
+        }
+
+        return total;
+    }
 }

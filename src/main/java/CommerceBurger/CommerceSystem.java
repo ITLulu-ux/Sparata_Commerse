@@ -78,11 +78,20 @@ public class CommerceSystem {
                 System.out.print("장바구니에 추가하시겠습니까? (Y/N): ");
                 String answer = scanner.next();
 
-                if (cart.canAdd(selectedProduct, 1)) {
-                    cart.addItem(selectedProduct, 1);
-                    System.out.println("장바구니에 추가되었습니다.");
-                } else {
-                    System.out.println("재고가 부족합니다.");
+                if (answer.equalsIgnoreCase("Y")) {
+
+                    System.out.println("수량을 입력하세요: ");
+                    int quantity = scanner.nextInt();
+
+                    if (cart.canAdd(selectedProduct, quantity)) {
+                        cart.addItem(selectedProduct, quantity);
+                        System.out.println("장바구니에 추가되었습니다.");
+                        System.out.println("총 금액: " + cart.getTotalPrice() + "원");
+                    } else {
+                        System.out.println("재고가 부족합니다.");
+                    }
+                } else if (answer.equalsIgnoreCase("N")) {
+                    System.out.println("장바구니 추가를 취소했습니다.");
                 }
 
                 System.out.println("[ 장바구니 ]");
