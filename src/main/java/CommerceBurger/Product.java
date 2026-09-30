@@ -45,4 +45,12 @@ public class Product {
     public void setStockQuantity(int stockQuantity) {
         this.stockQuantity = stockQuantity;
     }
+
+    public void decreaseStock(int quantity) {
+        if (quantity > stockQuantity) {
+            throw new IllegalArgumentException("재고가 부족합니다.");
+        }
+
+        stockQuantity -= quantity;
+    }
 }
