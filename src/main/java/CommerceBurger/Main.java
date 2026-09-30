@@ -138,11 +138,6 @@ public class Main {
         set.addProduct(garlicbulgogiwhopperset);
         set.addProduct(bulgogiwhopperset);
 
-        // TODO:
-        // 음료 카테고리
-        // 사이드 카테고리
-        // 세트 카테고리
-
         List<Category> categories = List.of(
                 burger,
                 drink,
@@ -150,30 +145,19 @@ public class Main {
                 set
         );
 
-        // TODO:
-        // Customer 생성
-
         Customer customer = new Customer(
                 "김루루",
                 "example@email.com",
                 "일반"
         );
 
-        // TODO:
-        // Category들을 List로 묶기
-
-        // TODO:
-        // CommerceSystem 생성
-
-        // TODO:
-        // start() 호출
-
         CommerceSystem commerceSystem =
                 new CommerceSystem(categories, customer);
 
-        commerceSystem.start();
+        Kiosk kiosk =
+                new Kiosk(commerceSystem);
 
-
+        kiosk.start();
     }
 }
 
