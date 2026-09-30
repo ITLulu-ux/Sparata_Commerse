@@ -59,6 +59,15 @@ public class CommerceSystem {
         }
 
         order.complete();
+
+        // 주문 확정 후 재고 차감
+        for (CartItem cartItem : cart.getItems()) {
+            cartItem.getProduct()
+                    .decreaseStock(cartItem.getQuantity());
+        }
+
+        // 주문 완료 후 장바구니 비우기
+        cart.clear();
     }
 
     public int getCartTotalPrice() {

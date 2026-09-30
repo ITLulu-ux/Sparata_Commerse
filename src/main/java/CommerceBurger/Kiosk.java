@@ -79,10 +79,9 @@ public class Kiosk {
                     System.out.print("주문하시겠습니까? (Y/N): ");
                     String orderAnswer = scanner.next();
 
+
                     if (orderAnswer.equalsIgnoreCase("Y")) {
-
                         commerceSystem.order();
-
                         System.out.println("주문이 완료되었습니다.");
 
                     } else if (orderAnswer.equalsIgnoreCase("N")) {

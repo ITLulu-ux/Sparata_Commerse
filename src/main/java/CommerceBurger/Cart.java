@@ -33,10 +33,10 @@ public class Cart {
         return total;
     }
 
-    public void order() {
-        for (CartItem item : items) {
-            item.getProduct().decreaseStock(item.getQuantity());
-        }
+    public void clear() {
+//        for (CartItem item : items) {
+//            item.getProduct().decreaseStock(item.getQuantity());
+//        }
 
         items.clear();
     }
