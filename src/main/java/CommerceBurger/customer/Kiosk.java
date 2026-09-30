@@ -1,4 +1,8 @@
-package CommerceBurger;
+package CommerceBurger.customer;
+
+import CommerceBurger.commerce.CommerceSystem;
+import CommerceBurger.domain.Category;
+import CommerceBurger.domain.Product;
 
 import java.util.*;
 

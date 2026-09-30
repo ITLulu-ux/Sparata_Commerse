@@ -1,5 +1,11 @@
 package CommerceBurger;
 
+import CommerceBurger.commerce.CommerceSystem;
+import CommerceBurger.customer.Kiosk;
+import CommerceBurger.domain.Category;
+import CommerceBurger.domain.Customer;
+import CommerceBurger.domain.Product;
+
 import java.util.List;
 
 public class Main {

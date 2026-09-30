@@ -1,4 +1,4 @@
-package CommerceBurger;
+package CommerceBurger.domain;
 
 public class Product {
 

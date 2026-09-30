@@ -1,4 +1,4 @@
-package CommerceBurger;
+package CommerceBurger.domain;
 
 import java.util.ArrayList;
 import java.util.List;

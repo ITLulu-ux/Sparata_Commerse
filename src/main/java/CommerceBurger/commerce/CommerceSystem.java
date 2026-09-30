@@ -1,4 +1,6 @@
-package CommerceBurger;
+package CommerceBurger.commerce;
+
+import CommerceBurger.domain.*;
 
 import java.util.List;
 import java.util.Scanner;
