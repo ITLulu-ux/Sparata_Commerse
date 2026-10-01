@@ -11,10 +11,15 @@ public class Kiosk {
 
     private CommerceSystem commerceSystem;
     private Scanner scanner;
+    private AdminSystem adminSystem;
+
+    // AdminSystem adminSystem=new AdminSystem(commerceSystem.getCategories(), scanner);
 
     public Kiosk(CommerceSystem commerceSystem) {
         this.commerceSystem = commerceSystem;
         this.scanner = new Scanner(System.in);
+        this.adminSystem=new AdminSystem(commerceSystem.getCategories(), scanner);
+
     }
 
     private void showProducts(Category category) {
@@ -119,6 +124,7 @@ public class Kiosk {
             System.out.println("2. 음료");
             System.out.println("3. 사이드");
             System.out.println("4. 세트");
+            System.out.println("5. 관리자");
             System.out.println("0. 종료");
             System.out.println("선택: ");
 
@@ -142,6 +148,10 @@ public class Kiosk {
                     showProducts(categories.get(3));
                     break;
 
+                case 5:
+                    enterAdmin();
+                    break;
+
                 case 0:
                     System.out.println("커머스 플랫폼을 종료합니다.");
                     return;
@@ -162,7 +172,7 @@ public class Kiosk {
         if (password.equals("admin")) {
             System.out.println("관리자 인증 성공");
 
-            AdminSystem adminSystem = new AdminSystem(commerceSystem.getCategories());
+            // AdminSystem adminSystem = new AdminSystem(commerceSystem.getCategories());
             adminSystem.start();
 
             return;
