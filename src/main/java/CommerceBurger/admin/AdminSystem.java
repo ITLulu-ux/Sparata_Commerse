@@ -35,6 +35,7 @@ public class AdminSystem {
 
                 case 2:
                     // 상품 수정
+                    updateProduct();
                     break;
 
                 case 3:
@@ -115,6 +116,55 @@ public class AdminSystem {
         category.addProduct(product);
 
         System.out.println("상품이 추가되었습니다.");
+    }
+
+    private void updateProduct() {
+        Category category = selectCategory();
+
+        if (category == null) {
+            return;
+        }
+
+        scanner.nextLine();
+
+        System.out.print("수정할 상품명을 입력하세요: ");
+        String name = scanner.nextLine();
+
+        Product product = category.findProductByName(name);
+
+        if (product == null) {
+            System.out.println("상품을 찾을 수 없습니다.");
+            return;
+        }
+
+        System.out.println("현재 상품 정보:");
+        System.out.println(
+                product.getName() + " | "
+                        + product.getPrice() + "원 | "
+                        + product.getDescription() + " | 재고: "
+                        + product.getStockQuantity()
+        );
+
+        System.out.print("새 가격을 입력하세요: ");
+        int price = scanner.nextInt();
+
+        scanner.nextLine();
+
+        System.out.print("새 상품 설명을 입력하세요: ");
+        String description = scanner.nextLine();
+
+        System.out.print("새 재고 수량을 입력하세요: ");
+        int stockQuantity = scanner.nextInt();
+
+        updateProduct(
+                category,
+                name,
+                price,
+                description,
+                stockQuantity
+        );
+
+        System.out.println("상품이 수정되었습니다.");
     }
 
     public void updateProduct(
