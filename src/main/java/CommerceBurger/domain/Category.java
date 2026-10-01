@@ -18,6 +18,20 @@ public class Category {
       products.add(product);
    }
 
+   // 상품 업데이트
+   public Product findProductByName(String name) {
+      for (Product product : products) {
+         if (product.getName().equals(name)) {
+            return product;
+         }
+      }
+
+      return null;
+   }
+
+   public void deleteProduct(Product product) {
+      products.remove(product);
+   }
    // 카테고리 이름 반환
    public String getName() {
       return name;

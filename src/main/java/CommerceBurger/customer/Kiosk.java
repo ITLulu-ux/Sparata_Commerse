@@ -1,5 +1,6 @@
 package CommerceBurger.customer;
 
+import CommerceBurger.admin.AdminSystem;
 import CommerceBurger.commerce.CommerceSystem;
 import CommerceBurger.domain.Category;
 import CommerceBurger.domain.Product;
@@ -149,5 +150,27 @@ public class Kiosk {
                     System.out.println("잘못된 입력입니다.");
             }
         }
+    }
+
+    private void enterAdmin() {
+        int attempts=0;
+
+        while (attempts < 3) {
+            System.out.println("비밀번호를 입력하세요");
+            String password=scanner.next();
+
+        if (password.equals("admin")) {
+            System.out.println("관리자 인증 성공");
+
+            AdminSystem adminSystem = new AdminSystem(commerceSystem.getCategories());
+            adminSystem.start();
+
+            return;
+        }
+
+        attempts++;
+            System.out.println("비밀번호가 틀렸습니다.");
+        }
+        System.out.println("비밀먼호를 3회 틀렸습니다.");
     }
 }
