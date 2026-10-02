@@ -18,7 +18,7 @@ public class Kiosk {
     public Kiosk(CommerceSystem commerceSystem) {
         this.commerceSystem = commerceSystem;
         this.scanner = new Scanner(System.in);
-        this.adminSystem=new AdminSystem(commerceSystem.getCategories(), scanner);
+        this.adminSystem=new AdminSystem(commerceSystem.getCategories(), scanner, commerceSystem);
 
     }
 
@@ -124,7 +124,8 @@ public class Kiosk {
             System.out.println("2. 음료");
             System.out.println("3. 사이드");
             System.out.println("4. 세트");
-            System.out.println("5. 관리자");
+            System.out.println("5. 장바구니");
+            System.out.println("6. 관리자");
             System.out.println("0. 종료");
             System.out.println("선택: ");
 
@@ -149,6 +150,10 @@ public class Kiosk {
                     break;
 
                 case 5:
+                    commerceSystem.showCart();
+                    break;
+
+                case 6:
                     enterAdmin();
                     break;
 

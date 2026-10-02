@@ -29,7 +29,7 @@ public class Category {
       return null;
    }
 
-   public void deleteProduct(Product product) {
+   public void deleteProduct(Category category, Product product) {
       products.remove(product);
    }
    // 카테고리 이름 반환

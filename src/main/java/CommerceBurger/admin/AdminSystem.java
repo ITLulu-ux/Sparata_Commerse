@@ -1,5 +1,6 @@
 package CommerceBurger.admin;
 
+import CommerceBurger.commerce.CommerceSystem;
 import CommerceBurger.domain.Category;
 import CommerceBurger.domain.Product;
 
@@ -10,10 +11,12 @@ public class AdminSystem {
     private final Scanner scanner;
     private List<Category> categories;
     //private List<Product> products;
+    private CommerceSystem commerceSystem;
 
-    public AdminSystem(List<Category> categories, Scanner scanner) {
+    public AdminSystem(List<Category> categories, Scanner scanner, CommerceSystem commerceSystem) {
         this.categories = categories;
         this.scanner=scanner;
+        this.commerceSystem=commerceSystem;
     }
 
     public void start() {
@@ -40,6 +43,7 @@ public class AdminSystem {
 
                 case 3:
                     // 상품 삭제
+                    deleteProduct();
                     break;
 
                 case 0:
@@ -183,8 +187,47 @@ public class AdminSystem {
         }
     }
 
+    private void deleteProduct() {
+        Category category = selectCategory();
+
+        if (category == null) {
+            return;
+        }
+
+        scanner.nextLine();
+
+        System.out.print("삭제할 상품명을 입력하세요: ");
+        String name = scanner.nextLine();
+
+        Product product = category.findProductByName(name);
+
+        if (product == null) {
+            System.out.println("상품을 찾을 수 없습니다.");
+            return;
+        }
+
+        System.out.println("현재 상품 정보:");
+        System.out.println(
+                product.getName() + " | "
+                        + product.getPrice() + "원 | "
+                        + product.getDescription() + " | 재고: "
+                        + product.getStockQuantity()
+        );
+
+        System.out.print("정말 삭제하시겠습니까? (Y/N): ");
+        String answer = scanner.nextLine();
+
+        if (answer.equalsIgnoreCase("Y")) {
+            // 삭제
+            deleteProduct(category, product);
+            System.out.println("상품이 삭제되었습니다.");
+        } else {
+            System.out.println("상품 삭제를 취소했습니다.");
+        }
+    }
+
     public void deleteProduct(Category category, Product product) {
-        category.deleteProduct(product);
+        commerceSystem.deleteProduct(category, product);
     }
 }
 

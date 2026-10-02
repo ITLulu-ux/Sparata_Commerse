@@ -80,6 +80,11 @@ public class CommerceSystem {
 
         System.out.println("[ 장바구니 ]");
 
+        if (cart.getItems().isEmpty()) {
+            System.out.println("장바구니가 비어 있습니다.");
+            return;
+        }
+
         for (CartItem item : cart.getItems()) {
             System.out.println(
                     item.getProduct().getName()
@@ -90,5 +95,14 @@ public class CommerceSystem {
                             + "개"
             );
         }
+    }
+
+    public void deleteProduct(Category category, Product product) {
+        System.out.println("CommerceSystem 상품 삭제 실행");
+
+        category.deleteProduct(category, product);
+        cart.removeProduct(product);
+
+        System.out.println("Cart에서도 상품 삭제 실행");
     }
 }

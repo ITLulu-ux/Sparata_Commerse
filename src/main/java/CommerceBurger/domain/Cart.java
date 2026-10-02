@@ -34,10 +34,10 @@ public class Cart {
     }
 
     public void clear() {
-//        for (CartItem item : items) {
-//            item.getProduct().decreaseStock(item.getQuantity());
-//        }
-
         items.clear();
+    }
+
+    public void removeProduct(Product product) {
+        items.removeIf(item -> item.getProduct() == product);
     }
 }
