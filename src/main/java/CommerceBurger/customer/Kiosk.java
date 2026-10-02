@@ -112,6 +112,36 @@ public class Kiosk {
         }
     }
 
+    private void cartMenu() {
+        while (true) {
+            commerceSystem.showCart();
+
+            System.out.println();
+            System.out.println("1. 상품 삭제");
+            System.out.println("0. 뒤로가기");
+            System.out.print("선택: ");
+
+            int choice = scanner.nextInt();
+
+            if (choice == 0) {
+                return;
+            }
+
+            if (choice == 1) {
+                scanner.nextLine();
+
+                System.out.print("삭제할 상품명을 입력하세요: ");
+                String name = scanner.nextLine();
+
+                commerceSystem.removeFromCart(name);
+
+                System.out.println("상품이 장바구니에서 삭제되었습니다.");
+            } else {
+                System.out.println("잘못된 입력입니다.");
+            }
+        }
+    }
+
     public void start() {
 
         List<Category> categories =
@@ -150,7 +180,7 @@ public class Kiosk {
                     break;
 
                 case 5:
-                    commerceSystem.showCart();
+                    cartMenu();
                     break;
 
                 case 6:

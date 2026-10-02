@@ -126,9 +126,13 @@ public class CommerceSystem {
     public void deleteProduct(Category category, Product product) {
         System.out.println("CommerceSystem 상품 삭제 실행");
 
-        category.deleteProduct(category, product);
-        cart.removeProduct(product);
+        category.deleteProduct(product);
+        // cart.removeProductByName(product.getName());
 
-        System.out.println("Cart에서도 상품 삭제 실행");
+        System.out.println("상품 목록에서 상품 삭제 실행");
+    }
+
+    public void removeFromCart(String productName) {
+        cart.removeProductByName(productName);
     }
 }

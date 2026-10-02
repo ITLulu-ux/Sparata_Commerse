@@ -40,4 +40,10 @@ public class Cart {
     public void removeProduct(Product product) {
         items.removeIf(item -> item.getProduct() == product);
     }
+
+    public void removeProductByName(String name) {
+        items = items.stream()
+                .filter(item -> !item.getProduct().getName().equals(name))
+                .toList();
+    }
 }

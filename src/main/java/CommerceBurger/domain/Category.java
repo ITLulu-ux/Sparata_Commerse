@@ -13,6 +13,14 @@ public class Category {
       this.products = new ArrayList<>();
    }
 
+   public List<Product> findProductsByMaxPrice(int maxPrice) {
+      return products.stream()
+              .filter(product -> product.getPrice() <= maxPrice)
+              .toList();
+   }
+
+   // List<Product> products = category.findProductsByMaxPrice(10000);
+
    // 상품 추가
    public void addProduct(Product product) {
       products.add(product);
@@ -20,16 +28,14 @@ public class Category {
 
    // 상품 업데이트
    public Product findProductByName(String name) {
-      for (Product product : products) {
-         if (product.getName().equals(name)) {
-            return product;
-         }
-      }
+         return products.stream()
+                 .filter(product -> product.getName().equals(name))
+                 .findFirst()
+                 .orElse(null);
 
-      return null;
    }
 
-   public void deleteProduct(Category category, Product product) {
+   public void deleteProduct(Product product) {
       products.remove(product);
    }
    // 카테고리 이름 반환
