@@ -45,6 +45,10 @@ public class CommerceSystem {
         return false;
     }
 
+    public int getCartTotalPrice() {
+        return cart.getTotalPrice();
+    }
+
     public void order() {
 
         Order order = new Order();
@@ -60,6 +64,15 @@ public class CommerceSystem {
             order.addItem(orderItem);
         }
 
+        int totalPrice = order.getTotalPrice();
+        int discountRate = customer.getGrade().getDiscountRate();
+        int finalPrice = order.getDiscountedTotalPrice(customer.getGrade());
+
+        System.out.println("주문 금액: " + totalPrice + "원");
+        System.out.println("고객 등급: " + customer.getGrade());
+        System.out.println("할인율: " + discountRate + "%");
+        System.out.println("최종 결제 금액: " + finalPrice + "원");
+
         order.complete();
 
         // 주문 확정 후 재고 차감
@@ -72,8 +85,21 @@ public class CommerceSystem {
         cart.clear();
     }
 
-    public int getCartTotalPrice() {
-        return cart.getTotalPrice();
+    public int getTotalPrice() {
+        int total = 0;
+
+        for (CartItem cartItem : cart.getItems()) {
+            total += cartItem.getTotalPrice();
+        }
+
+        return total;
+    }
+
+    public int getDiscountedTotalPrice(CustomerGrade grade) {
+        int total = getTotalPrice();
+        int discountRate = grade.getDiscountRate();
+
+        return total - (total * discountRate / 100);
     }
 
     public void showCart() {

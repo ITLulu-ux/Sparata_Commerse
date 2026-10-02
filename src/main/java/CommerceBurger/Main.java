@@ -4,6 +4,7 @@ import CommerceBurger.commerce.CommerceSystem;
 import CommerceBurger.customer.Kiosk;
 import CommerceBurger.domain.Category;
 import CommerceBurger.domain.Customer;
+import CommerceBurger.domain.CustomerGrade;
 import CommerceBurger.domain.Product;
 
 import java.util.List;
@@ -154,7 +155,7 @@ public class Main {
         Customer customer = new Customer(
                 "김루루",
                 "example@email.com",
-                "일반"
+                CustomerGrade.GOLD
         );
 
         CommerceSystem commerceSystem =

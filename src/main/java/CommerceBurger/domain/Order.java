@@ -31,6 +31,13 @@ public class Order {
         return total;
     }
 
+    public int getDiscountedTotalPrice(CustomerGrade grade) {
+        int total = getTotalPrice();
+        int discountRate = grade.getDiscountRate();
+
+        return total - (total * discountRate / 100);
+    }
+
     public OrderStatus getStatus() {
         return status;
     }
