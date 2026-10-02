@@ -18,9 +18,7 @@ public class Category {
               .filter(product -> product.getPrice() <= maxPrice)
               .toList();
    }
-
-   // List<Product> products = category.findProductsByMaxPrice(10000);
-
+   
    // 상품 추가
    public void addProduct(Product product) {
       products.add(product);

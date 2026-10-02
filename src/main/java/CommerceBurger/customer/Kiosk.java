@@ -43,6 +43,14 @@ public class Kiosk {
             );
         }
 
+        List<Product> result = category.findProductsByMaxPrice(10000);
+
+        System.out.println("[10000원 이하 상품]");
+
+        for (Product product : result) {
+            System.out.println(product.getName());
+        }
+
         System.out.println("0. 뒤로가기");
         System.out.print("상품 선택: ");
 
@@ -165,6 +173,7 @@ public class Kiosk {
 
                 case 1:
                     showProducts(categories.get(0));
+                    testPriceFilter(categories.get(0));
                     break;
 
                 case 2:
@@ -217,5 +226,18 @@ public class Kiosk {
             System.out.println("비밀번호가 틀렸습니다.");
         }
         System.out.println("비밀먼호를 3회 틀렸습니다.");
+    }
+
+    private void testPriceFilter(Category category) {
+        List<Product> result = category.findProductsByMaxPrice(10000);
+
+        System.out.println("[ 10,000원 이하 상품 ]");
+
+        for (Product product : result) {
+            System.out.println(
+                    product.getName() + " | "
+                            + product.getPrice() + "원"
+            );
+        }
     }
 }
